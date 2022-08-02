@@ -1,11 +1,11 @@
 package config
 
-// Cart represents the state of a buyer's shopping cart
+// Config represents a map of line items
 type Config struct {
 	lineItems map[string]LineItem
 }
 
-// Item represents any item available for sale
+// line items represent items to be bid upon
 type LineItem struct {
 	ID    string
 	Name  string
@@ -19,7 +19,7 @@ func (c *Config) init() {
 	}
 }
 
-// AddItem adds an item to the cart
+// AddItem adds an item to the config
 func (c *Config) AddLineItem(i LineItem) {
 	c.init()
 	if existingLineItem, ok := c.lineItems[i.ID]; ok {
@@ -31,7 +31,7 @@ func (c *Config) AddLineItem(i LineItem) {
 	}
 }
 
-// RemoveItem removes n number of items with give id from the cart
+// RemoveItem removes n number of items with give id from the config
 func (c *Config) RemoveLineItem(id string, n int) {
 	c.init()
 	if existingLineItem, ok := c.lineItems[id]; ok {
@@ -44,7 +44,7 @@ func (c *Config) RemoveLineItem(id string, n int) {
 	}
 }
 
-// TotalAmount returns the total amount of the cart
+// TotalAmount returns the total amount of the config
 func (c *Config) TotalAmount() float64 {
 	c.init()
 	totalAmount := 0.0
@@ -54,7 +54,7 @@ func (c *Config) TotalAmount() float64 {
 	return totalAmount
 }
 
-// TotalUnits returns the total number of units across all items in the cart
+// TotalUnits returns the total number of units across all items in the config
 func (c *Config) TotalUnits() int {
 	c.init()
 	totalUnits := 0
@@ -64,7 +64,7 @@ func (c *Config) TotalUnits() int {
 	return totalUnits
 }
 
-// TotalUniqueItems returns the number of unique items in the cart
+// TotalUniqueItems returns the number of unique items in the config
 func (c *Config) TotalUniqueLineItems() int {
 	return len(c.lineItems)
 }
