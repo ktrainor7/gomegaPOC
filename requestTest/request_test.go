@@ -2,14 +2,20 @@ package request
 
 import (
 	"os"
+	"testing"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-
 	"github.com/onsi/gomega/ghttp"
 )
 
+func TestRequest(t *testing.T) {
+	RegisterFailHandler(Fail)
+	RunSpecs(t, "Client Suite")
+}
+
 var _ = Describe("Client", func() {
+
 	var (
 		server     *ghttp.Server
 		statusCode int
@@ -27,7 +33,6 @@ var _ = Describe("Client", func() {
 		server.Close()
 	})
 
-	// test for empty url
 	Context("When given empty url", func() {
 		BeforeEach(func() {
 			addr = ""

@@ -1,1 +1,2 @@
 # gomegaPOC
+This project is intended to be a proof of concept for the use of gomega and ginkgo to test Kraken. Within this project are tests for altering an object as well as tests that bring up a simple server and performs request tests. To run these projects open a terminal and open each test folder. Then run `go test`.
